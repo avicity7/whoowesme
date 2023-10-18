@@ -1,6 +1,5 @@
 const express = require('express')
 const https = require("https")
-const fs = require('fs')
 const bodyParser = require('body-parser')
 const { Pool } = require('pg')
 require('dotenv').config()
