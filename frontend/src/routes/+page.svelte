@@ -1,7 +1,7 @@
 <script>
   let pageData = [{loanTitle:null, borrower:null, lenders:[null], lendAmounts:[null]}]
   const getData = async () => {
-    let data = await fetch("https://13.212.100.69:5000/getLoanLedger")
+    let data = await fetch("https://whoowesme-server.onrender.com/records")
     let result = await data.json()
     pageData = result
   }
