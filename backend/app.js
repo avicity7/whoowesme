@@ -2,6 +2,7 @@ const express = require('express')
 
 const bodyParser = require('body-parser')
 const { Pool } = require('pg')
+const cors = require('cors')
 require('dotenv').config()
 
 const app = express()
@@ -18,6 +19,7 @@ const pool = new Pool({
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(cors())
 
 app.get('/records', async (req, res) => {
   try {
