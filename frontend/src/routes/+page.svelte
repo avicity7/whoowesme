@@ -1,11 +1,9 @@
 <script>
-  let count = 0
   let pageData = [{loanTitle:null, borrower:null, lenders:[null], lendAmounts:[null]}]
   const getData = async () => {
     let data = await fetch("http://13.212.100.69:5000/getLoanLedger")
     let result = await data.json()
     pageData = result
-    count += 1
   }
 </script>
 
@@ -41,10 +39,6 @@
     >
       Click me!
     </button>
-
-    <div>
-      {count}
-    </div>
 
     {#if pageData[0].loanTitle != null}
       {#each pageData as item, i}
