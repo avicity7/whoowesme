@@ -49,7 +49,7 @@ app.post('/records', async (req, res) => {
 })
 
 https
-  .createServer({key: fs.readFileSync('./key.pem'), cert: fs.readFileSync('./cert.pem')},app)
+  .createServer(app)
   .listen(port, ()=>{
     console.log(`Running on Port ${port}`)
   });
