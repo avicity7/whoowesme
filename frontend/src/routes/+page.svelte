@@ -9,7 +9,7 @@
 
 <div class="font-albert m-16 flex flex-row justify-center text-neutral-800">
   <div class="flex flex-col items-center">
-    <h1 class="w-screen ml-24 font-bold text-3xl mb-24">Home</h1>
+    <h1 class="w-screen pl-24 font-bold text-3xl mb-24">Home</h1>
     <form
       class="flex flex-col items-center"
     >
