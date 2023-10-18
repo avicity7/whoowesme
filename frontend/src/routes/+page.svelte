@@ -1,12 +1,20 @@
 <script>
   let pageData = [{title:null, lender_user_id:null, borrower_user_id:null, amount:null, outstanding:null}]
+  let name = '',
+    amount = 0
   const getData = async () => {
     let data = await fetch("https://whoowesme-server.onrender.com/records")
     let result = await data.json()
     pageData = result
   }
   const sendData = async() => {
-
+    const response = await fetch('https://whoowesme-server.onrender.com/records', {
+			method: 'POST',
+			body: JSON.stringify({title:name, lender_user_id: 0, borrower_user_id:0, amount, outstanding:true}),
+			headers: {
+				'content-type': 'application/json'
+			}
+		});
   }
 </script>
 
@@ -23,6 +31,7 @@
         autocomplete="off"
         placeholder="Name"
         class="ml-2 mb-6 outline-none select-none"
+        bind:value={name}
       />
 
       <label
@@ -33,13 +42,14 @@
           name="amount"
           autocomplete="off"
           class="ml-2 border-2 border-neutral-200 rounded focus:border-purple-400 outline-none select-none"
+          bind:value={amount}
         />
       </label>
       <button 
         class="bg-neutral-800 text-neutral-100 font-semibold rounded hover:bg-purple-900 mt-8 p-2"
         type="submit"
       >
-        Sub
+        Submit
       </button>
     </form>
 
