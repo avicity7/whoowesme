@@ -1,5 +1,5 @@
 <script>
-  let pageData = [{loanTitle:null, borrower:null, lenders:[null], lendAmounts:[null]}]
+  let pageData = [{title:null, lender_user_id:null, borrower_user_id:null, amount:null, outstanding:null}]
   const getData = async () => {
     let data = await fetch("https://whoowesme-server.onrender.com/records")
     let result = await data.json()
@@ -40,10 +40,10 @@
       Click me!
     </button>
 
-    {#if pageData[0].loanTitle != null}
+    {#if pageData[0].title != null}
       {#each pageData as item, i}
           <div class="shadow p-5 m-5 rounded">
-            {i}: {item.loanTitle}
+            {i}: {item.title}
           </div>
       {/each}
     {/if}
