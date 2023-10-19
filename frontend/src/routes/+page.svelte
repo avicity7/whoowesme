@@ -1,19 +1,20 @@
 <script lang="ts">
   import RecordCard from "../components/recordCard.svelte";
-  import { setContext } from "svelte";
-
-  let pageData = [{record_id: 0, title:null, lender_user_id:null, borrower_user_id:null, amount:null, outstanding:null}]
+  import { onMount, setContext } from 'svelte';
+  
+  export let data
+  let pageData = data.result
   let name = '',
-    amount = 0
-  let fetching = false
+    amount = ''
   let sending = false
+
   const getData = async () => {
-    fetching = true
-    let data = await fetch("https://whoowesme-server.onrender.com/records")
-    let result = await data.json()
+    let response = await fetch(data.url)
+    let result = await response.json()
     pageData = result.results
-    fetching = !fetching
   }
+  setContext('getData', getData)
+
   const sendData = async() => {
     sending = true
     const response = await fetch('https://whoowesme-server.onrender.com/records', {
@@ -26,7 +27,6 @@
     getData()
     sending = !sending
   }
-  setContext('getData', getData)
 </script>
 
 <div class="font-albert text-neutral-800">
@@ -55,6 +55,7 @@
           <input 
             type="number"
             name="amount"
+            step="0.01"
             autocomplete="off"
             class="p-1 ml-2 border-2 border-neutral-200 rounded focus:border-purple-400 outline-none select-none"
             bind:value={amount}
@@ -74,22 +75,9 @@
       </button>
     </form>
 
-    <button
-      class="bg-neutral-800 text-neutral-100 font-semibold rounded hover:bg-purple-900 mt-8 p-2"
-      on:click={getData}
-    >
-      {#if fetching}
-        Loading...
-      {:else}
-        Get records
-      {/if}
-    </button>
-
-    {#if pageData[0].title != null}
-      {#each pageData as item}
-          <RecordCard {item}/>
-      {/each}
-    {/if}
+    {#each pageData as item}
+        <RecordCard {item} {data}/>
+    {/each}
 
   </div>
 </div>
