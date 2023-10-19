@@ -7,9 +7,7 @@
 
   let deleting = false,
   editing = false, 
-  sending = false,
-  name = item.title, 
-  amount = item.amount
+  sending = false
 
   const getData: Function = getContext('getData')
   const deleteRecord = async(id: Number) => {
@@ -29,7 +27,7 @@
     sending = true
     const response = await fetch(data.url, {
 			method: 'PUT',
-			body: JSON.stringify({id: item.record_id, title:name, lender_user_id: 0, borrower_user_id:0, amount, outstanding:true}),
+			body: JSON.stringify(item),
 			headers: {
 				'content-type': 'application/json'
 			}
@@ -70,7 +68,7 @@
             name="name"
             autocomplete="off"
             class="p-1 ml-2 border-2 border-neutral-200 rounded focus:border-purple-400 outline-none select-none"
-            bind:value={name}
+            bind:value={item.title}
           />
       </div>
       <div>
@@ -83,7 +81,7 @@
             step="0.01"
             autocomplete="off"
             class="p-1 ml-2 border-2 border-neutral-200 rounded focus:border-purple-400 outline-none select-none"
-            bind:value={amount}
+            bind:value={item.amount}
           />
         </label>
       </div>
