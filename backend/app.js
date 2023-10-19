@@ -50,6 +50,22 @@ app.post('/records', async (req, res) => {
   }
 })
 
+app.delete('/records', async (req,res) => {
+  try {
+    const client = await pool.connect()
+    const {id} = req.body
+    const query = 'DELETE FROM records WHERE record_id = $1'
+    const values = [id]
+    const result = await client.query(query, values)
+    const results = { 'results': (result) ? result.rows : null }
+    res.send(results)
+    client.release()
+  } catch (err) {
+    console.error(err)
+    res.send("Error " + err)
+  }
+})
+
 app.listen(port, ()=>{
   console.log(`Running on Port ${port}`)});
 

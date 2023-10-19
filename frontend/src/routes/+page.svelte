@@ -1,5 +1,7 @@
 <script>
-  let pageData = [{title:null, lender_user_id:null, borrower_user_id:null, amount:null, outstanding:null}]
+  import RecordCard from "../components/recordCard.svelte";
+
+  let pageData = [{record_id: 0, title:null, lender_user_id:null, borrower_user_id:null, amount:null, outstanding:null}]
   let name = '',
     amount = 0
   let fetching = false
@@ -83,10 +85,7 @@
 
     {#if pageData[0].title != null}
       {#each pageData as item}
-          <div class="shadow p-5 m-5 rounded">
-            <p class="text-lg font-semibold">{item.title}</p>
-            <p class="text-md text-purple-600">${item.amount}</p>
-          </div>
+          <RecordCard {item}/>
       {/each}
     {/if}
 

@@ -9,7 +9,7 @@
       That friend that paid back lesser than he owes.
       <br>
       <br>
-      <p class="font-medium">Let us remember those pesky details, and focus on getting that bag.</p>
+      <p class="font-medium">Let us remember those pesky details, you focus on getting that bag.</p>
     </div>
     <div class="w-full">
       <a href={"/"} class="flex grow flex-row justify-center rounded p-1 font-semibold text-neutral-100 bg-purple-500 hover:bg-purple-600">Get Started</a>
