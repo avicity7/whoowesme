@@ -43,20 +43,9 @@
 
 <div class="border-b-2 border-neutral-200 p-5 flex flex-col w-[75%] md:w-[25%]">
   {#if !deleting}
-    <div class="flex flex-row items-center justify-between">
-      <p class="text-lg font-semibold mr-2">{item.title}</p>
-      <div>
-        <button on:click={() => {editing = true}}>
-          <PencilOutline class="text-neutral-500 hover:text-purple-600" size={20}/>
-        </button>
-        <button on:click={() => {deleteRecord(item.record_id)}}>
-          <DeleteOutline class="text-neutral-500 hover:text-red-400" size={20}/>
-        </button>
-      </div>
-    </div>
-    <p class="text-md text-purple-600">${item.amount}</p>
     {#if editing}
     <form
+      autocomplete="off"
       class="flex flex-col items-center align-center justify-center"
       on:submit|preventDefault={sendData}
     >
@@ -67,20 +56,18 @@
           <input 
             type="text"
             name="name"
-            autocomplete="off"
             class="p-1 ml-2 border-2 border-neutral-200 rounded focus:border-purple-400 outline-none select-none"
             bind:value={item.title}
           />
       </div>
       <div>
         <label
-          class="font-medium ml-10 mr-10"
+          class="font-medium"
         >Amount:
           <input 
             type="number"
             name="amount"
             step="0.01"
-            autocomplete="off"
             class="p-1 ml-2 border-2 border-neutral-200 rounded focus:border-purple-400 outline-none select-none"
             bind:value={item.amount}
           />
@@ -98,6 +85,19 @@
         {/if}
       </button>
     </form>
+    {:else}
+    <div class="flex flex-row items-center justify-between">
+      <p class="text-lg font-semibold mr-2">{item.title}</p>
+      <div>
+        <button on:click={() => {editing = true}}>
+          <PencilOutline class="text-neutral-500 hover:text-purple-600" size={20}/>
+        </button>
+        <button on:click={() => {deleteRecord(item.record_id)}}>
+          <DeleteOutline class="text-neutral-500 hover:text-red-400" size={20}/>
+        </button>
+      </div>
+    </div>
+    <p class="text-md text-purple-600">${item.amount}</p>
     {/if}
     {:else}
     <div class="flex flex-row items-center justify-center">
