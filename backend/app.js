@@ -57,7 +57,7 @@ app.post('/records', async (req, res) => {
 app.put('/records', async (req,res) => {
   try {
     const client = await pool.connect()
-    const {id, title, amount} = req.body
+    const {id, title, amount} = req.body.item
     const query = 'UPDATE records SET title = $2, amount = $3 WHERE record_id = $1'
     const values = [id, title, amount]
     const result = await client.query(query, values)

@@ -25,6 +25,7 @@
 
   const sendData = async() => {
     sending = true
+    console.log(item)
     const response = await fetch(data.url, {
 			method: 'PUT',
 			body: JSON.stringify(item),
