@@ -28,7 +28,7 @@
   const sendData = async() => {
     sending = true
     const response = await fetch(data.url, {
-			method: 'UPDATE',
+			method: 'PUT',
 			body: JSON.stringify({id: item.record_id, title:name, lender_user_id: 0, borrower_user_id:0, amount, outstanding:true}),
 			headers: {
 				'content-type': 'application/json'

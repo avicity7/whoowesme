@@ -50,7 +50,7 @@ app.post('/records', async (req, res) => {
   }
 })
 
-app.update('/records', async (req,res) => {
+app.put('/records', async (req,res) => {
   try {
     const client = await pool.connect()
     const {id, title, amount} = req.body
