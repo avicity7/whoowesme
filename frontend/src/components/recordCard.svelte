@@ -2,7 +2,9 @@
   export let item = {record_id: 0, title:null, lender_user_id:null, borrower_user_id:null, amount:null, outstanding:null}
 
   import DeleteOutline from 'svelte-material-icons/DeleteOutline.svelte'
+  import { getContext } from 'svelte';
 
+  const getData: Function = getContext('getData')
   const deleteRecord = async(id: Number) => {
     const response = await fetch('https://whoowesme-server.onrender.com/records', {
 			method: 'DELETE',
@@ -11,6 +13,7 @@
 				'content-type': 'application/json'
 			}
 		});
+    getData()
   }
 </script>
 

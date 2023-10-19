@@ -1,5 +1,6 @@
-<script>
+<script lang="ts">
   import RecordCard from "../components/recordCard.svelte";
+  import { setContext } from "svelte";
 
   let pageData = [{record_id: 0, title:null, lender_user_id:null, borrower_user_id:null, amount:null, outstanding:null}]
   let name = '',
@@ -25,6 +26,7 @@
     getData()
     sending = !sending
   }
+  setContext('getData', getData)
 </script>
 
 <div class="font-albert text-neutral-800">
