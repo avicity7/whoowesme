@@ -21,7 +21,7 @@
 				'content-type': 'application/json'
 			}
 		});
-    getData()
+    getData() 
     setTimeout(() => deleting = !deleting, 500) // Change this in the future!
   }
 
