@@ -34,7 +34,7 @@
 <div class="font-albert text-neutral-800">
   <div class="flex flex-col items-center">
     <h1 class="w-screen pt-12 pl-6 md:pl-24 font-bold text-3xl mb-12">Home</h1>
-    <h2 class="text-2xl mb-2">You are owed</h2>
+    <h2 class="text-2xl mb-2 font-medium">You are owed</h2>
     <h3 class="text-2xl mb-16 font-semibold text-purple-500">${sum}</h3>
     <h2 class="text-2xl mb-6">New Record</h2>
     <form
