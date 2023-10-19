@@ -1,6 +1,6 @@
 <script lang="ts">
   import RecordCard from "../components/recordCard.svelte";
-  import { onMount, setContext } from 'svelte';
+  import { setContext } from 'svelte';
   
   export let data
   let pageData = data.result
