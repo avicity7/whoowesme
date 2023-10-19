@@ -25,7 +25,11 @@ app.get('/records', async (req, res) => {
   try {
     const client = await pool.connect()
     const result = await client.query('SELECT * FROM records')
-    const results = { 'results': (result) ? result.rows : null }
+    let sum = 0
+    result.rows.map((item) => {
+      sum += parseFloat(item.amount)
+    })
+    const results = { 'results': (result) ? result.rows : null , 'sum': sum}
     res.send(results)
     client.release()
   } catch (err) {
