@@ -35,18 +35,20 @@
 			}
 		});
     getData()
-    sending = !sending
-    editing = !editing
+    setTimeout(() => {
+      sending = !sending
+      editing = !editing
+    }, 500) // Change this in the future!
   }
 </script>
 
-<div class="shadow p-5 m-5 rounded flex flex-col w-[75%] md:w-[25%]">
+<div class="border-b-2 border-neutral-200 p-5 flex flex-col w-[75%] md:w-[25%]">
   {#if !deleting}
     <div class="flex flex-row items-center justify-between">
       <p class="text-lg font-semibold mr-2">{item.title}</p>
       <div>
         <button on:click={() => {editing = true}}>
-          <PencilOutline class="text-neutral-500 hover:text-purple-500" size={20}/>
+          <PencilOutline class="text-neutral-500 hover:text-purple-600" size={20}/>
         </button>
         <button on:click={() => {deleteRecord(item.record_id)}}>
           <DeleteOutline class="text-neutral-500 hover:text-red-400" size={20}/>

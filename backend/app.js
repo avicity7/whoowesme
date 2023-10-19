@@ -29,7 +29,7 @@ app.get('/records', async (req, res) => {
     result.rows.map((item) => {
       sum += parseFloat(item.amount)
     })
-    const results = { 'results': (result) ? result.rows : null , 'sum': sum}
+    const results = { 'results': (result) ? result.rows : null , 'sum': parseFloat(sum).toFixed(2)}
     res.send(results)
     client.release()
   } catch (err) {
