@@ -10,6 +10,8 @@
   sending = false
 
   const getData: Function = getContext('getData')
+  let completed: Boolean = getContext('completed')
+
   const deleteRecord = async(id: Number) => {
     deleting = !deleting
     const response = await fetch(data.url, {
@@ -19,13 +21,12 @@
 				'content-type': 'application/json'
 			}
 		});
-    getData() 
-    setTimeout(() => deleting = !deleting, 500) // Change this in the future!
+    await getData() 
+    deleting = !deleting
   }
 
   const sendData = async() => {
     sending = true
-    console.log(item)
     const response = await fetch(data.url, {
 			method: 'PUT',
 			body: JSON.stringify(item),
@@ -33,11 +34,9 @@
 				'content-type': 'application/json'
 			}
 		});
-    getData()
-    setTimeout(() => {
-      sending = !sending
-      editing = !editing
-    }, 500) // Change this in the future!
+    await getData()
+    sending = !sending
+    editing = !editing
   }
 </script>
 

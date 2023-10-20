@@ -3,31 +3,37 @@
   import { setContext } from 'svelte';
   
   export let data
-  let pageData = data.result
-  let sum = data.sum
-  let name = '',
-    amount = ''
-  let sending = false
-
-  const getData = async () => {
-    let response = await fetch(data.url)
-    let result = await response.json()
-    pageData = result.results
-    sum = result.sum
+  let pageData = data.result,
+  sum = data.sum,
+  name = '',
+  amount = '',
+  sending = false
+  
+  const getData = () => {
+    return new Promise(async (resolve) => {
+      let response = await fetch(data.url)
+      let result = await response.json()
+      pageData = result.results
+      sum = result.sum
+      resolve(true)
+    })
   }
+
   setContext('getData', getData)
 
   const sendData = async() => {
     sending = true
-    const response = await fetch(data.url, {
-			method: 'POST',
-			body: JSON.stringify({title:name, lender_user_id: 0, borrower_user_id:0, amount, outstanding:true}),
-			headers: {
-				'content-type': 'application/json'
-			}
-		});
-    getData()
-    sending = !sending
+    await fetch(data.url, {
+      method: 'POST',
+      body: JSON.stringify({title:name, lender_user_id: 0, borrower_user_id:0, amount, outstanding:true}),
+      headers: {
+        'content-type': 'application/json'
+      }
+    });
+    await getData()
+    sending = false
+    name = '',
+    amount = ''
   }
 </script>
 
