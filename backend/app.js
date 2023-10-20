@@ -41,9 +41,9 @@ app.get('/records', async (req, res) => {
 app.post('/records', async (req, res) => {
   try {
     const client = await pool.connect()
-    const {title, lender_user_id, borrower_user_id, amount, outstanding} = req.body
-    const query = 'INSERT INTO records(title, lender_user_id, borrower_user_id, amount, outstanding) VALUES ($1, $2, $3, $4, $5)'
-    const values = [title, lender_user_id, borrower_user_id, amount, outstanding]
+    const {title, lender_email, borrower_email, amount, outstanding} = req.body
+    const query = 'INSERT INTO records(title, lender_email, borrower_email, amount, outstanding) VALUES ($1, $2, $3, $4, $5)'
+    const values = [title, lender_email, borrower_email, amount, outstanding]
     const result = await client.query(query, values)
     const results = { 'results': (result) ? result.rows : null }
     res.send(results)

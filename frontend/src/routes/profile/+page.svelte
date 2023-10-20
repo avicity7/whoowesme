@@ -1,15 +1,16 @@
-<script>
+<script lang="ts">
   import { signIn, signOut } from '@auth/sveltekit/client'
   import { Avatar } from 'flowbite-svelte';
   import { page } from '$app/stores';
 
+  let image_uri:string = $page.data.session?.user?.image as string
 </script>
 
 <div class="font-albert max-w-xl text-neutral-800">
 {#if $page.data.session}
   <h1 class="w-screen pt-12 pl-6 md:pl-24 font-bold text-3xl mb-24">Profile</h1>
   <div class="ml-6 mr-6 md:mr-0 md:ml-24 flex flex-col">
-    <Avatar size="lg" class="bg-purple-400 text-neutral-100 text-2xl">{$page.data.session?.user?.name?.charAt(0)}</Avatar>
+    <Avatar size="lg" src={image_uri} />
     <h2 class="text-xl font-semibold mt-6">{$page.data.session?.user?.name}</h2>
     <h3 class="text-md mt-2">{$page.data.session?.user?.email}</h3>
 

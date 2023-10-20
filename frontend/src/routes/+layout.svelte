@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import "../app.css"
 	import { Avatar } from 'flowbite-svelte'
 
@@ -7,6 +7,8 @@
 	import { page } from "$app/stores";
 
 	inject({ mode: dev ? 'development' : 'production' });
+
+	let image_uri:string = $page.data.session?.user?.image as string
 </script>
 
 <nav class="p-6 text-lg bg-neutral-800 font-albert">
@@ -18,7 +20,7 @@
 		</div>
 		{#if $page.data.session}
 		<a href="/profile" class="flex">
-			<Avatar size="sm" class="bg-purple-400 text-neutral-100">{$page.data.session?.user?.name?.charAt(0)}</Avatar>
+			<Avatar size="sm" src={image_uri} />
 		</a>
 		{:else}
 		<a href="/profile" class="flex">

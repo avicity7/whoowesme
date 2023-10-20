@@ -1,7 +1,7 @@
 <script lang="ts">
   import RecordCard from "../components/recordCard.svelte";
   import { setContext } from 'svelte';
-  
+  import { page } from "$app/stores";
   export let data
   let pageData = data.result,
   sum = data.sum,
@@ -25,7 +25,7 @@
     sending = true
     await fetch(data.url, {
       method: 'POST',
-      body: JSON.stringify({title:name, lender_user_id: 0, borrower_user_id:0, amount, outstanding:true}),
+      body: JSON.stringify({title:name, lender_email: $page.data.session?.user?.email, borrower_email:'', amount, outstanding:true}),
       headers: {
         'content-type': 'application/json'
       }
