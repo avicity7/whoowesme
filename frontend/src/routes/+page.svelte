@@ -37,7 +37,7 @@
   }
 </script>
 
-<div class="font-albert text-neutral-800">
+<div class="font-albert text-neutral-800 mb-10">
   <div class="flex flex-col items-center">
     <h1 class="w-screen pt-12 pl-6 md:pl-24 font-bold text-3xl mb-12">Home</h1>
     <h2 class="text-2xl mb-2 font-semibold">You are owed</h2>

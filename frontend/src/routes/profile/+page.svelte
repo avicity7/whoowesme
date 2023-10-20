@@ -50,14 +50,12 @@
 .gsi-material-button {
   background-color: WHITE;
   background-image: none;
-  border: 1px solid #747775;
   -webkit-border-radius: 20px;
   border-radius: 20px;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   color: #1f1f1f;
   cursor: pointer;
-  font-family: 'Roboto', arial, sans-serif;
   font-size: 14px;
   height: 40px;
   letter-spacing: 0.25px;
@@ -99,7 +97,6 @@
 .gsi-material-button .gsi-material-button-contents {
   -webkit-flex-grow: 1;
   flex-grow: 1;
-  font-family: 'Roboto', arial, sans-serif;
   font-weight: 500;
   overflow: hidden;
   text-overflow: ellipsis;
