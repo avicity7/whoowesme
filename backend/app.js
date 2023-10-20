@@ -24,7 +24,8 @@ app.use(cors())
 app.get('/records', async (req, res) => {
   try {
     const client = await pool.connect()
-    const result = await client.query('SELECT * FROM records ORDER BY record_id DESC')
+    const lender_email = req.query.lender_email
+    const result = await client.query('SELECT * FROM records ORDER BY record_id DESC WHERE lender_email = $1', [lender_email])
     let sum = 0
     result.rows.map((item) => {
       sum += parseFloat(item.amount)

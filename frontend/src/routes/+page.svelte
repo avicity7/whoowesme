@@ -11,7 +11,7 @@
   
   const getData = () => {
     return new Promise(async (resolve) => {
-      let response = await fetch(data.url)
+      let response = await fetch(data.url+`?lender_email=${$page.data.session?.user?.email}`)
       let result = await response.json()
       pageData = result.results
       sum = result.sum
