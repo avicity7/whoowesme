@@ -4,7 +4,8 @@
 
 	import { dev } from '$app/environment';
 	import { inject } from '@vercel/analytics'
-	
+	import { page } from "$app/stores";
+
 	inject({ mode: dev ? 'development' : 'production' });
 </script>
 
@@ -15,9 +16,15 @@
 			<a href="/" class="mr-6 font-medium text-neutral-100 hover:text-purple-300">home</a>
 			<a href="/about" class="mr-6 font-medium text-neutral-100 hover:text-purple-300">about</a>
 		</div>
+		{#if $page.data.session}
 		<a href="/profile" class="flex">
-			<Avatar size="sm" class="bg-purple-400 text-neutral-100">K</Avatar>
+			<Avatar size="sm" class="bg-purple-400 text-neutral-100">{$page.data.session?.user?.name?.charAt(0)}</Avatar>
 		</a>
+		{:else}
+		<a href="/profile" class="flex">
+			<Avatar size="sm" class="bg-gray-400 text-neutral-100"></Avatar>
+		</a>
+		{/if}
 	</div>
 </nav>
 

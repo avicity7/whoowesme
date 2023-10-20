@@ -29,6 +29,8 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@auth/core": "^0.17.0",
+		"@auth/sveltekit": "^0.3.10",
 		"@fontsource-variable/albert-sans": "^5.0.9",
 		"@smui/circular-progress": "^7.0.0-beta.15",
 		"@types/node": "^20.8.7",
