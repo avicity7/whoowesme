@@ -11,7 +11,7 @@
   
   const getData = () => {
     return new Promise(async (resolve) => {
-      let response = await fetch(data.url+`?lender_email=${$page.data.session?.user?.email}`)
+      let response = await fetch(data.url+`/records?lender_email=${$page.data.session?.user?.email}`)
       let result = await response.json()
       pageData = result.results
       sum = result.sum
@@ -23,7 +23,7 @@
 
   const sendData = async() => {
     sending = true
-    await fetch(data.url, {
+    await fetch(data.url+'/records', {
       method: 'POST',
       body: JSON.stringify({title:name, lender_email: $page.data.session?.user?.email, borrower_email:'', amount, outstanding:true}),
       headers: {
@@ -39,7 +39,7 @@
 
 <div class="font-albert text-neutral-800 mb-10">
   <div class="flex flex-col items-center">
-    <h1 class="w-screen pt-12 pl-6 md:pl-24 font-bold text-3xl mb-12">Home</h1>
+    <h1 class="w-full pt-12 pl-6 md:pl-24 font-bold text-3xl mb-12">Home</h1>
     <h2 class="text-2xl mb-2 font-semibold">You are owed</h2>
     <h3 class="text-2xl mb-16 font-semibold text-purple-500">${sum}</h3>
     <h2 class="text-2xl mb-6 font-medium">New Record</h2>

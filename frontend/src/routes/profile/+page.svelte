@@ -8,7 +8,7 @@
 
 <div class="font-albert max-w-xl text-neutral-800">
 {#if $page.data.session}
-  <h1 class="w-screen pt-12 pl-6 md:pl-24 font-bold text-3xl mb-24">Profile</h1>
+  <h1 class="w-full pt-12 pl-6 md:pl-24 font-bold text-3xl mb-24">Profile</h1>
   <div class="ml-6 mr-6 md:mr-0 md:ml-24 flex flex-col">
     <Avatar size="lg" src={image_uri} />
     <h2 class="text-xl font-semibold mt-6">{$page.data.session?.user?.name}</h2>

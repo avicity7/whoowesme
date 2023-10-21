@@ -1,5 +1,5 @@
 <div class="font-albert max-w-xl">
-  <h1 class="w-screen pt-12 pl-6 md:pl-24 font-bold text-3xl mb-24">About</h1>
+  <h1 class="w-full pt-12 pl-6 md:pl-24 font-bold text-3xl mb-24">About</h1>
   <div class="ml-6 mr-6 md:mr-0 md:ml-24 flex flex-col items-left">
     <h1 class="text-2xl md:text-4xl font-black text-neutral-800 mb-8">Let us remember for you.</h1>
     <div class="text-md md:text-xl mb-8">

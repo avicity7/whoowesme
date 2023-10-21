@@ -14,7 +14,7 @@
 
   const deleteRecord = async(id: Number) => {
     deleting = !deleting
-    const response = await fetch(data.url, {
+    const response = await fetch(data.url+'/records', {
 			method: 'DELETE',
 			body: JSON.stringify({id}),
 			headers: {
@@ -27,7 +27,7 @@
 
   const sendData = async() => {
     sending = true
-    const response = await fetch(data.url, {
+    const response = await fetch(data.url+'/records', {
 			method: 'PUT',
 			body: JSON.stringify(item),
 			headers: {
