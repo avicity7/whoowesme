@@ -1,6 +1,6 @@
 <script lang="ts">
   export let item = {record_id: 0, title:null, lender_user_id:null, borrower_user_id:null, amount:null, outstanding:null}
-  export let data = {result: null, url: '' as RequestInfo}
+  export let url: RequestInfo
   import DeleteOutline from 'svelte-material-icons/DeleteOutline.svelte'
   import PencilOutline from 'svelte-material-icons/PencilOutline.svelte'
   import { getContext } from 'svelte';
@@ -10,11 +10,10 @@
   sending = false
 
   const getData: Function = getContext('getData')
-  let completed: Boolean = getContext('completed')
 
   const deleteRecord = async(id: Number) => {
     deleting = !deleting
-    const response = await fetch(data.url+'/records', {
+    const response = await fetch(url+'/records', {
 			method: 'DELETE',
 			body: JSON.stringify({id}),
 			headers: {
@@ -27,7 +26,7 @@
 
   const sendData = async() => {
     sending = true
-    const response = await fetch(data.url+'/records', {
+    const response = await fetch(url+'/records', {
 			method: 'PUT',
 			body: JSON.stringify(item),
 			headers: {

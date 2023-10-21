@@ -15,7 +15,7 @@
     <h3 class="text-md mt-2">{$page.data.session?.user?.email}</h3>
 
     <button 
-      class="mt-6 p-1 w-[20%] bg-red-700 hover:bg-red-800 rounded text-neutral-100"
+      class="mt-6 p-1 w-[20%] bg-[#E54C38] hover:bg-[#C23A22] rounded-full text-neutral-100"
       on:click={() => signOut()}
     >
       <div>
